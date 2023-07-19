@@ -1,0 +1,15 @@
+:root {
+    --background: #171521;
+    --menu-dark-blue: #19192B;
+    --blue: #009CB7;
+    --orange: #F19952;
+    --dark-orange: #FF6645;
+    --gray-text: #74687B;
+  }
+
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}

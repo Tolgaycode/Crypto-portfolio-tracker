@@ -1,5 +1,5 @@
 :root {
-    --background: #171521;
+    --backgrounded: #171521;
     --menu-dark-blue: #19192B;
     --blue: #009CB7;
     --orange: #F19952;
@@ -12,4 +12,11 @@
     box-sizing: border-box;
     margin: 0;
     padding: 0;
+    }
+
+body {
+  height: 100vh;
+  width: 100vw;
+  background: rgb(0,156,183);
+  background: radial-gradient(circle, rgba(0,156,183,1) 0%, rgba(0,94,116,1) 0%, rgba(23,21,33,1) 100%);
 }

@@ -62,7 +62,7 @@ border-radius: 0.5rem;
 .container-menu {
   display: flex;
   justify-content: center;
-  
+
 }
 
 /* ASIDE MENU */
@@ -70,11 +70,14 @@ border-radius: 0.5rem;
 aside {
   display: flex;
   flex-direction: column;
-  margin: 1rem;
   overflow: auto;
   height: 100%;
-  width: 14rem;
+  width: 16rem;
   justify-content: center;
+  padding: 0.5rem;
+  background-color:  #19192b71;
+  border-radius: 0.7rem 0 0 0.7rem;
+  
 }
 
 .divider {
@@ -82,6 +85,7 @@ aside {
   height: 1px;
   background: var(--gray-text);
   margin: 1rem 0;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3); 
 }
 
 .add-protfolio {
@@ -93,15 +97,18 @@ aside {
   font-size: 1rem;
   cursor: pointer;
   margin: 0 2rem;
+  margin-top: 20px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3); 
 }
 
 .protfolio-name {
   color: white;
   font-size: 1.6rem;
+  padding-left: 12px;
 }
 .protfolio-list 
 {
-  
+  height: 15rem;
 }
 .wallet {
   text-decoration: none;
@@ -110,11 +117,51 @@ aside {
   font-size: 1rem;
   cursor: pointer;
   margin: 1rem 0.8rem;
-  
+  padding: 5px 0px;
+  border-bottom: var(--blue) solid 4px;
+  border-bottom-color: transparent;
+  transition: border-bottom-color 0.5s;
 }
 
 aside i {
   margin-right: 10px;
+}
+
+.save-btn {
+  background-color: #00b75c;
+  border: none;
+  color: white;
+  padding: 0.7rem 1rem;
+  border-radius: 0.7rem;
+  font-size: 1rem;
+  cursor: pointer;
+  margin: 0.5rem 1rem;
+  opacity: 0.8;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3); 
+}
+
+.upload-btn {
+  background-color: #FF6645;
+  border: none;
+  color: white;
+  padding: 0.7rem 1rem;
+  border-radius: 0.7rem;
+  font-size: 1rem;
+  cursor: pointer;
+  margin: 0.5rem 1rem;
+  opacity: 0.8;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3); 
+}
+
+.add-protfolio:hover, .save-btn:hover, .upload-btn:hover {
+  opacity: 0.4; 
+ 
+}
+
+.wallet:hover{
+  opacity: 0.8;
+  border-bottom-color: var(--blue);
+
 }
 
 
@@ -122,3 +169,18 @@ aside i {
 
 
 /* FOOTER */
+
+footer {
+  display: flex;
+  justify-content: center;
+  color: var(--gray-text);
+  padding: 1rem;
+  
+}
+
+footer p {
+  color: var(--gray-text);
+  font-size: small;
+  margin: 0.5rem;
+  text-shadow: #000000b0 0.1rem 0.1rem;
+}

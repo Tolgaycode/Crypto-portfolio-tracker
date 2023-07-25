@@ -108,7 +108,7 @@ aside {
 }
 .protfolio-list 
 {
-  height: 15rem;
+  min-height: 20rem;
 }
 .wallet {
   text-decoration: none;

@@ -167,6 +167,89 @@ aside i {
 
 /* MENU */
 
+.container-main {
+  background-color:  #19192bb4;
+  border-radius: 0 0.7rem 0.7rem 0;
+  width: 55rem;
+}
+
+.header-main {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 1rem;
+  padding: 1.5rem;
+}
+
+.holding-total {
+  color: var(--gray-text);
+  font-size: 1.7rem;
+}
+
+.holding-value {
+  color: var(--orange);
+  font-size: 2rem;
+  margin-top: 0.5rem;
+}
+
+.transaction-btn {
+  background-color: var(--dark-orange);
+  border: none;
+  color: white;
+  padding: 0.7rem 1rem;
+  border-radius: 0.7rem;
+  font-size: 1rem;
+  cursor: pointer;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3); 
+}
+
+.holding-menu {
+  
+  display: flex;
+  align-items: center;
+  margin: 0.7rem;
+  
+}
+
+.holding-menu div {
+  color: var(--gray-text);
+  padding: 0.7rem;
+  font-size: 1.1rem;
+}
+
+.list-item-texts {
+  color: var(--gray-text);
+  font-size: 0.8rem;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  padding: 0.5rem;
+  font-weight: bold;
+}
+
+.list-item-texts > div {
+  width: 100px;
+}
+
+.list-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.5rem;
+  color: white;
+}
+.list-item > div {
+  width: 100px;
+}
+
+.item-name {
+ display: flex;
+}
+
+.item-name > i {
+  margin-right: 15px;
+}
+
 
 /* FOOTER */
 

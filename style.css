@@ -139,6 +139,10 @@ aside i {
   opacity: 0.8;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3); 
 }
+.save-btn i {
+  font-size: 20px;
+}
+
 
 .upload-btn {
   background-color: #FF6645;
@@ -151,6 +155,10 @@ aside i {
   margin: 0.5rem 1rem;
   opacity: 0.8;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3); 
+}
+
+.upload-btn i {
+  font-size: 20px;
 }
 
 .add-protfolio:hover, .save-btn:hover, .upload-btn:hover {
@@ -208,14 +216,53 @@ aside i {
   
   display: flex;
   align-items: center;
-  margin: 0.7rem;
+  margin: 0 0.5rem;
   
+}
+
+
+.list-container {
+  /* HIDDEN */
 }
 
 .holding-menu div {
   color: var(--gray-text);
-  padding: 0.7rem;
+  padding: 0.5rem;
   font-size: 1.1rem;
+}
+
+.line-holding {
+  position: relative;
+  padding: 0;
+}
+
+.line-holding::before {
+  content: "";
+  position: absolute;
+  left: 25%;
+  top: 50%;
+  width: 50%;
+  height: 5px; /* Çizgi kalınlığı */
+  background-color: var(--blue); /* Çizgi rengi */
+  transform: translateY(-50%); /* Dikey ortalamak için */
+}
+
+.line-tans {
+  position: relative;
+  padding: 0;
+  opacity: 0;
+}
+
+.line-tans::before {
+  content: "";
+  position: absolute;
+  left: 25%;
+  top: 50%;
+  width: 50%;
+  height: 5px; /* Çizgi kalınlığı */
+  background-color: var(--blue); /* Çizgi rengi */
+  transform: translateY(-50%); /* Dikey ortalamak için */
+  
 }
 
 .list-item-texts {
@@ -229,18 +276,25 @@ aside i {
 }
 
 .list-item-texts > div {
-  width: 100px;
+  width: 120px;
 }
 
 .list-item {
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-start;
   align-items: center;
   padding: 0.5rem;
   color: white;
 }
 .list-item > div {
-  width: 100px;
+  width: 120px;
+  font-size: 0.9rem;
+}
+
+.item-action i {
+  font-size: 16px;
+  margin: 0 0.5rem;
+  cursor: pointer;
 }
 
 .item-name {
@@ -251,7 +305,34 @@ aside i {
   margin-right: 15px;
 }
 
+.buy {
+  color: #00b75c;
+  margin-bottom: 6px;
+}
 
+.sell {
+  color: #FF6645;
+  margin-bottom: 6px;
+}
+
+.trans-name {
+  display: flex;
+  padding-left: 6px;
+}
+
+.coin {
+  margin-left: 12px;
+}
+
+.trans-action i{
+  margin: 0 0.5rem;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.trans-type {
+  padding: 0 3px;
+}
 /* FOOTER */
 
 footer {

@@ -99,6 +99,11 @@ aside {
   margin: 0 2rem;
   margin-top: 20px;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3); 
+
+}
+
+button {
+  transition: 200ms all ease-in-out;
 }
 
 .protfolio-name {

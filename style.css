@@ -350,3 +350,178 @@ footer p {
   margin: 0.5rem;
   text-shadow: #000000b0 0.1rem 0.1rem;
 }
+
+/* ADD TRANSACTION */
+
+.transaction-container {
+  background-color: #19192B;
+  color: white;
+  width: 550px;
+  border-radius: 20px;
+  padding: 15px;
+}
+
+.transaction-text {
+ display: flex;
+ justify-content: center;
+ align-items: center;
+ font-size: 24px;
+ letter-spacing: 3px;
+}
+
+.buy-sell-transfer {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  margin: 15px;
+
+}
+
+.buy-sell-transfer div {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: #74687B solid 3px;
+  border-radius: 20px;
+  padding: 10px 30px;
+  cursor: pointer;
+}
+
+.buy-btn:hover {
+  background-color: green;
+  color: white;
+}
+
+.sell-btn:hover {
+  background-color: red;
+  color: white;
+}
+
+.transfer-btn:hover {
+  background-color: #74687B;
+  color: white;
+}
+
+.coin-trans-text {
+  color: var(--gray-text);
+  font-weight: bold;
+  padding: 0px 10px ;
+  margin-top: 20px
+}
+
+.coin-input {
+  display: flex;
+  margin: 10px;
+  border: #74687B solid 1px;
+  border-radius: 20px;
+  padding: 10px 20px;
+  font-size: 20px;
+}
+
+.coin-text {
+  margin: 0px 16px;
+}
+
+.amount-text {
+  color: var(--gray-text);
+  font-weight: bold;
+  padding: 0px 10px ;
+  margin-top: 20px
+}
+
+.amount-input {
+  display: flex;
+  margin: 10px;
+  border: #74687B solid 1px;
+  border-radius: 20px;
+  padding: 10px 20px;
+  font-size: 20px;
+}
+
+.price-text {
+  color: var(--gray-text);
+  font-weight: bold;
+  padding: 0px 10px ;
+  margin-top: 20px
+}
+
+.price-input {
+  display: flex;
+  margin: 10px;
+  border: #74687B solid 1px;
+  border-radius: 20px;
+  padding: 10px 20px;
+  font-size: 20px;
+}
+
+.date-time-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.date-text {
+  color: var(--gray-text);
+  font-weight: bold;
+  padding: 0px 10px ;
+  margin-top: 10px
+}
+
+.date-input {
+  display: flex;
+  margin: 10px;
+  border: #74687B solid 1px;
+  border-radius: 20px;
+  padding: 10px 20px;
+  font-size: 20px;
+  width: 220px;
+}
+
+.time-text {
+  color: var(--gray-text);
+  font-weight: bold;
+  padding: 0px 10px ;
+  margin-top: 10px
+}
+
+.time-input {
+  display: flex;
+  margin: 10px;
+  border: #74687B solid 1px;
+  border-radius: 20px;
+  padding: 10px 20px;
+  font-size: 20px;
+  width: 220px;
+}
+
+.total-spent-container {
+  background-color: var(--backgrounded);
+  margin: 10px 0;
+  padding: 10px;
+  border-radius: 20px;
+}
+
+.total-spent-text {
+  color: var(--gray-text);
+  margin: 10px;
+  font-size: 18px;
+}
+
+.total-spent-input {
+  margin: 10px;
+  font-size: 26px;
+}
+
+.add-transaction-btn {
+  background-color: var(--blue);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  font-size: 20px;
+  margin: 20px 0;
+  padding: 18px;
+  border-radius: 20px;
+  cursor: pointer;
+  letter-spacing: 2px;
+}

@@ -71,9 +71,9 @@ aside {
   display: flex;
   flex-direction: column;
   overflow: auto;
-  height: 100%;
+  height: auto;
   width: 16rem;
-  justify-content: center;
+  justify-content: space-evenly;
   padding: 0.5rem;
   background-color:  #19192b71;
   border-radius: 0.7rem 0 0 0.7rem;
@@ -218,11 +218,9 @@ aside i {
 }
 
 .holding-menu {
-  
   display: flex;
   align-items: center;
   margin: 0 0.5rem;
-  
 }
 
 
@@ -230,6 +228,7 @@ aside i {
   color: var(--gray-text);
   padding: 0.5rem;
   font-size: 1.1rem;
+    cursor: pointer;
 }
 
 .line-holding {
@@ -353,12 +352,29 @@ footer p {
 
 /* ADD TRANSACTION */
 
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.425); 
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  display: none;
+}
+
 .transaction-container {
-  background-color: #19192B;
+  background: rgb(23,21,33);
+  background: linear-gradient(0deg, rgba(23,21,33,1) 0%, rgba(28,48,77,1) 100%);
   color: white;
   width: 550px;
   border-radius: 20px;
   padding: 15px;
+  position: relative;
+  z-index: 999;
+  box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.3);
 }
 
 .transaction-text {
@@ -367,6 +383,7 @@ footer p {
  align-items: center;
  font-size: 24px;
  letter-spacing: 3px;
+ margin: 20px 0px;
 }
 
 .buy-sell-transfer {
@@ -410,12 +427,31 @@ footer p {
 }
 
 .coin-input {
+  background-color: transparent;
+  color: white;
+  width: 500px;
   display: flex;
   margin: 10px;
   border: #74687B solid 1px;
   border-radius: 20px;
   padding: 10px 20px;
-  font-size: 20px;
+  font-size: 16px;
+}
+
+input:focus {
+  outline: none; 
+  border-color: var(--blue); 
+  box-shadow: 0 0 6px var(--blue); 
+  border: #74687B solid 0px;
+}
+
+::placeholder {
+  color: white;
+}
+
+input::-webkit-inner-spin-button,
+input::-webkit-outer-spin-button {
+  display: none;
 }
 
 .coin-text {
@@ -430,12 +466,15 @@ footer p {
 }
 
 .amount-input {
+  background-color: transparent;
+  color: white;
+  width: 500px;
   display: flex;
   margin: 10px;
   border: #74687B solid 1px;
   border-radius: 20px;
   padding: 10px 20px;
-  font-size: 20px;
+  font-size: 16px;
 }
 
 .price-text {
@@ -446,12 +485,15 @@ footer p {
 }
 
 .price-input {
+  background-color: transparent;
+  color: white;
+  width: 500px;
   display: flex;
   margin: 10px;
   border: #74687B solid 1px;
   border-radius: 20px;
   padding: 10px 20px;
-  font-size: 20px;
+  font-size: 16px;
 }
 
 .date-time-container {
@@ -469,11 +511,13 @@ footer p {
 
 .date-input {
   display: flex;
+  background-color: transparent;
+  color: white;
   margin: 10px;
   border: #74687B solid 1px;
   border-radius: 20px;
   padding: 10px 20px;
-  font-size: 20px;
+  font-size: 16px;
   width: 220px;
 }
 
@@ -486,16 +530,18 @@ footer p {
 
 .time-input {
   display: flex;
+  background-color: transparent;
+  color: white;
   margin: 10px;
   border: #74687B solid 1px;
   border-radius: 20px;
   padding: 10px 20px;
-  font-size: 20px;
+  font-size: 16px;
   width: 220px;
 }
 
 .total-spent-container {
-  background-color: var(--backgrounded);
+  background-color: #19192bb7;
   margin: 10px 0;
   padding: 10px;
   border-radius: 20px;
@@ -518,10 +564,20 @@ footer p {
   justify-content: center;
   align-items: center;
   color: white;
-  font-size: 20px;
+  font-size: 18px;
   margin: 20px 0;
   padding: 18px;
   border-radius: 20px;
   cursor: pointer;
   letter-spacing: 2px;
+}
+
+.close-icon {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  cursor: pointer;
+  font-size: 30px;
+  color: #888;
+  cursor: pointer;
 }

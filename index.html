@@ -248,43 +248,46 @@
     <footer>
       <p>Powered by Tolgay KAYA</p>
     </footer>
-    <div class="transaction-container">
-      <div class="transaction-text">Add Transaction</div>
-      <div class="buy-sell-transfer">
-        <div class="buy-btn">Buy</div>
-        <div class="sell-btn">Sell</div>
-        <div class="transfer-btn">Transfer</div>
-      </div>
-      <div class="coin-select">
-        <div class="coin-trans-text">Coin</div>
-        <div class="coin-input">
-          <i class="fa-solid fa-litecoin-sign" style="color: #ffffff"></i>
-          <div class="coin-text">ETH</div>
+    <div class="overlay">
+      <div class="transaction-container">
+        <div class="close-icon" onclick="closeOverlay()">
+          <i class="fa-regular fa-circle-xmark"></i>
         </div>
-      </div>
-      <div class="amount-container">
-        <div class="amount-text">Amount</div>
-        <div class="amount-input">Amount</div>
-      </div>
-      <div class="price-container">
-        <div class="price-text">Price</div>
-        <div class="price-input">Price</div>
-      </div>
-      <div class="date-time-container">
-        <div class="date-container">
-          <div class="date-text">Date</div>
-          <div class="date-input">Date</div>
+        <div class="transaction-text">Add Transaction</div>
+        <div class="buy-sell-transfer">
+          <div class="buy-btn">Buy</div>
+          <div class="sell-btn">Sell</div>
+          <div class="transfer-btn">Transfer</div>
         </div>
-        <div class="time-container">
-          <div class="time-text">Time</div>
-          <div class="time-input">Time</div>
+        <div class="coin-select">
+          <div class="coin-trans-text">Coin</div>
+          <input class="coin-input" type="text" placeholder="Coin Name">
+          </input>
         </div>
+        <div class="amount-container">
+          <div class="amount-text">Amount</div>
+          <input class="amount-input" type="number" placeholder="Amount"></input>
+        </div>
+        <div class="price-container">
+          <div class="price-text">Price</div>
+          <input class="price-input" type="number" placeholder="Price"></input>
+        </div>
+        <div class="date-time-container">
+          <div class="date-container">
+            <div class="date-text">Date</div>
+            <input type="date" class="date-input"></input>
+          </div>
+          <div class="time-container">
+            <div class="time-text">Time</div>
+            <input type="time" class="time-input"></input>
+          </div>
+        </div>
+        <div class="total-spent-container">
+          <div class="total-spent-text">Total Spent</div>
+          <div class="total-spent-input">$ 0</div>
+        </div>
+        <div class="add-transaction-btn">Add Transaction</div>
       </div>
-      <div class="total-spent-container">
-        <div class="total-spent-text">Total Spent</div>
-        <div class="total-spent-input">$ 0</div>
-      </div>
-      <div class="add-transaction-btn">Add Transaction</div>
     </div>
     <script src="script.js"></script>
   </body>

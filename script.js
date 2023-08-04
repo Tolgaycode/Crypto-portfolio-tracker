@@ -1,3 +1,4 @@
+//////////////////////////////////////////////////////////////////////
 const amountInput = document.querySelector(".amount-input");
 const priceInput = document.querySelector(".price-input");
 const totalSpentInput = document.querySelector(".total-spent-input");
@@ -7,7 +8,7 @@ const portfolioListItems = document.querySelectorAll(".protfolio-list li");
 
 const portfolioListArray = Array.from(portfolioListItems);
 
-let protfolioSelected = "Protfolio 1";
+//let protfolioSelected = "Protfolio 1";
 
 portfolioListArray.forEach((item) => {
   item.addEventListener("click", () => {
@@ -65,3 +66,5 @@ transactionOpenBtn.addEventListener("click", function () {
 function closeOverlay() {
   document.querySelector(".overlay").style.display = "none";
 }
+
+///////////////////////////////////////////////////////////////

@@ -67,4 +67,21 @@ function closeOverlay() {
   document.querySelector(".overlay").style.display = "none";
 }
 
+// document
+//   .querySelectorAll(".buy-btn, .sell-btn, .transfer-btn")
+//   .addEventListener("click", function () {
+//     //this.classList.toggle("active");
+//     console.log(this);
+//   });
+
+console.log(document.querySelectorAll(".buy-btn, .sell-btn, .transfer-btn"));
+
+const btns = document.querySelectorAll(".buy-btn, .sell-btn, .transfer-btn");
+
+for (let i = 0; i < btns.length; i++) {
+  btns[i].addEventListener("click", function () {
+    this.classList.toggle("active");
+  });
+}
+
 ///////////////////////////////////////////////////////////////

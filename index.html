@@ -17,7 +17,9 @@
   </head>
   <body>
     <header>
-      <img src="asset/logo-no-background.png" class="logo" alt="Logo" />
+      <a href="index.html">
+        <img src="asset/logo-no-background.png" class="logo" alt="Logo" />
+    </a>
       <nav>
         <ul>
           <li><a href="#Home">Home</a></li>
@@ -29,22 +31,22 @@
     <div class="container-menu">
       <aside>
         <button type="button" class="add-protfolio">
-          <i class="fa-solid fa-plus" style="color: #ffffff"></i> Add Protfolio
+          <i class="fa-solid fa-plus" style="color: #ffffff"></i> Add Portfolio
         </button>
         <div class="divider"></div>
-        <p class="protfolio-name">Main Protfolio</p>
+        <p class="protfolio-name">All Wallet</p>
         <div class="divider"></div>
         <ul class="protfolio-list">
           <li>
             <div class="wallet">
               <i class="fa-solid fa-wallet" style="color: #ffffff"></i>
-              <span>Protfolio 1</span>
+              <span>All Wallet</span>
             </div>
           </li>
           <li>
             <div class="wallet">
               <i class="fa-solid fa-wallet" style="color: #ffffff"></i>
-              <span>Protfolio 2</span>
+              <span>Wallet 2</span>
             </div>
           </li>
         </ul>
@@ -276,11 +278,11 @@
         <div class="date-time-container">
           <div class="date-container">
             <div class="date-text">Date</div>
-            <input type="date" class="date-input"></input>
+            <input type="date" class="date-input" id="dateInput"></input>
           </div>
           <div class="time-container">
             <div class="time-text">Time</div>
-            <input type="time" class="time-input"></input>
+            <input type="time" class="time-input" id="timeInput"></input>
           </div>
         </div>
         <div class="total-spent-container">

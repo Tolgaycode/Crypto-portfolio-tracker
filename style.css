@@ -73,7 +73,7 @@ aside {
   overflow: auto;
   height: auto;
   width: 16rem;
-  justify-content: space-evenly;
+  justify-content: start;
   padding: 0.5rem;
   background-color:  #19192b71;
   border-radius: 0.7rem 0 0 0.7rem;

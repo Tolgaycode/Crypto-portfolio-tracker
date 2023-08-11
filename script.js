@@ -97,9 +97,7 @@ for (let i = 0; i < btns.length; i++) {
   btns[i].addEventListener("click", function () {
     // Diğer düğmelerden "active" sınıfını kaldır
     for (let j = 0; j < btns.length; j++) {
-      if (j !== i) {
-        btns[j].classList.remove("active");
-      }
+      btns[j].classList.remove("active");
     }
 
     this.classList.toggle("active");
@@ -127,23 +125,23 @@ transferSelect.addEventListener("click", function () {
 });
 
 // Date ve Time input defeult date
-const dateInput = document.getElementById("dateInput");
-const isosToday = new Date().toISOString().split("T")[0];
-dateInput.value = isosToday;
+// const dateInput = document.getElementById("dateInput");
+// const isosToday = new Date().toISOString().split("T")[0];
+// dateInput.value = isosToday;
 
-const parts = isosToday.split("-");
-const today = `${parts[2]}-${parts[1]}-${parts[0]}`;
+// const parts = isosToday.split("-");
+// const today = `${parts[2]}-${parts[1]}-${parts[0]}`;
 
-const timeInput = document.getElementById("timeInput");
+// const timeInput = document.getElementById("timeInput");
 
-const now = new Date();
-const currentHour = String(now.getHours()).padStart(2, "0");
-const currentMinute = String(now.getMinutes()).padStart(2, "0");
+// const now = new Date();
+// const currentHour = String(now.getHours()).padStart(2, "0");
+// const currentMinute = String(now.getMinutes()).padStart(2, "0");
 
-timeInput.value = `${currentHour}:${currentMinute}`;
+// timeInput.value = `${currentHour}:${currentMinute}`;
 
-const selectedDate = today;
-const selectedTime = timeInput.value;
+// const selectedDate = today;
+// const selectedTime = timeInput.value;
 
 /////////////////////////////////////////////////////////
 const addTransactionBtn = document.querySelector(".add-transaction-btn");
@@ -153,8 +151,8 @@ addTransactionBtn.addEventListener("click", () => {
   const coinName = document.querySelector(".coin-input").value;
   const amount = document.querySelector(".amount-input").value;
   const price = document.querySelector(".price-input").value;
-  const date = selectedDate;
-  const time = selectedTime;
+  const date = document.querySelector(".date-input").value;
+  const time = document.querySelector(".time-input").value;
   const totalSpent = totalSpentInput.textContent.slice(2);
 
   // Inputların doldurulması ve Local ekleme
@@ -189,7 +187,7 @@ function renderTransactionList(transactionData) {
 
   listTransactionContainer.innerHTML = "";
 
-  transactionData.forEach((transaction, index, editIndex) => {
+  transactionData.forEach((transaction, index) => {
     const listItem = document.createElement("div");
     listItem.classList.add("list-item");
 
@@ -207,7 +205,7 @@ function renderTransactionList(transactionData) {
     transName.classList.add("trans-name");
     transName.innerHTML = `
       <i class="fa-solid fa-litecoin-sign" style="color: #ffffff"></i>
-      <div class="coin">${transaction.name}</div>
+      <div class="trans-coin">${transaction.name}</div>
     `;
 
     const transAmount = document.createElement("div");
@@ -263,19 +261,70 @@ function renderTransactionList(transactionData) {
   });
 }
 
-// Edit transaction faction TAMAMLANMADI
+// Editting inputs from localstoage
 function editTransaction(index) {
-  // overlay.style.display = "flex";
-  // let updatedData = JSON.parse(localStorage.getItem(protfolioSelected)) || [];
-  // updatedData.splice(index, 1);
-  // let coinNameEdit = document.querySelector(".coin-input");
-  // coinNameEdit.value = updatedData[0].name;
-  // let amountEdit = document.querySelector(".amount-input");
-  // amountEdit.value = updatedData[0].amount;
-  // console.log(updatedData[0]);
-  // console.log(updatedData[0].amount);
-  // console.log(index.amount);
+  overlay.style.display = "flex";
+  let transData = JSON.parse(localStorage.getItem(protfolioSelected)) || [];
+  document.querySelector(".index-input").value = index;
+  document.querySelector(".coin-input").value = transData[index].name;
+  document.querySelector(".amount-input").value = transData[index].amount;
+  document.querySelector(".price-input").value = transData[index].price;
+  document.querySelector(".date-input").value = transData[index].date;
+  document.querySelector(".time-input").value = transData[index].time;
+
+  for (let j = 0; j < btns.length; j++) {
+    btns[j].classList.remove("active");
+  }
+
+  if (transData[index].type === "Buy") {
+    document.querySelector(".buy-btn").classList.add("active");
+  } else if (transData[index].type === "Sell") {
+    document.querySelector(".sell-btn").classList.add("active");
+  } else if (transData[index].type === "Transfer") {
+    document.querySelector(".transfer-btn").classList.add("active");
+  }
+
+  updateTotalSpent();
 }
+
+//update data
+
+function updateEntry(index) {
+  let transData = JSON.parse(localStorage.getItem(protfolioSelected)) || [];
+  transData[index].name = document.querySelector(".coin-input").value;
+  transData[index].amount = document.querySelector(".amount-input").value;
+  transData[index].price = document.querySelector(".price-input").value;
+  transData[index].date = document.querySelector(".date-input").value;
+  transData[index].time = document.querySelector(".time-input").value;
+
+  localStorage.setItem(protfolioSelected, JSON.stringify(transData));
+  renderTransactions();
+}
+updatebtn = document.querySelector(".update-btn");
+updatebtn.addEventListener("click", () => {
+  updateEntry(document.querySelector(".index-input").value);
+});
+
+// const edittransactionType =
+//   document.querySelector(".trans-type > div").textContent;
+// const editcoinName = document.querySelector(".trans-coin").textContent;
+// const editamount = document.querySelector(".trans-amount").textContent;
+// const editprice = document.querySelector(".trans-price").textContent;
+// const editdate = document.querySelector(".trans-date").textContent;
+// const [datePart, timePart] = editdate.split(" ");
+
+//function editTransaction(index) {
+// overlay.style.display = "flex";
+// let updatedData = JSON.parse(localStorage.getItem(protfolioSelected)) || [];
+// updatedData.splice(index, 1);
+// let coinNameEdit = document.querySelector(".coin-input");
+// coinNameEdit.value = updatedData[0].name;
+// let amountEdit = document.querySelector(".amount-input");
+// amountEdit.value = updatedData[0].amount;
+// console.log(updatedData[0]);
+// console.log(updatedData[0].amount);
+// console.log(index.amount);
+//}
 
 // Delete transaction faction
 function deleteEntry(index) {

@@ -1,9 +1,29 @@
+//localstorage keys object listed in .protfolio-list
+function showPortfolioList() {
+  const portfolioList = document.querySelector(".protfolio-list");
+  portfolioList.innerHTML = ""; // mevcut içeriği temizle
+
+  const keys = Object.keys(localStorage); // tüm anahtarları al
+
+  keys.forEach((key) => {
+    const listItem = document.createElement("li");
+    listItem.innerHTML = `
+    <div class="wallet">
+      <i class="fa-solid fa-wallet" style="color: #ffffff"></i>
+      <span>${key}</span>
+    </div>
+  `;
+    portfolioList.appendChild(listItem);
+  });
+}
+
+showPortfolioList();
 //Portfolio select
 const portfolioListItems = document.querySelectorAll(".protfolio-list li");
 
 const portfolioListArray = Array.from(portfolioListItems);
 
-let protfolioSelected = "All Wallet";
+let protfolioSelected = "↓ Select Portfolio";
 console.log("Profil seçendi: " + protfolioSelected + "(protfolioSelected)");
 
 portfolioListArray.forEach((item) => {
@@ -28,6 +48,8 @@ addPortfolioButton.addEventListener("click", () => {
       </div>
     `;
     portfolioList.appendChild(newOption);
+    // userInput local storage a ekleyelim [] olarak
+    localStorage.setItem(userInput, JSON.stringify([]));
 
     // Yeni öğeye tıklama olayı ekleyelim
     newOption.addEventListener("click", () => {
@@ -35,6 +57,7 @@ addPortfolioButton.addEventListener("click", () => {
       console.log("Seçilen Portföy:", protfolioSelected);
       updatePortfolioText();
     });
+
     updatePortfolioText();
   }
 });
@@ -84,6 +107,19 @@ let overlay = document.querySelector(".overlay");
 
 transactionOpenBtn.addEventListener("click", function () {
   overlay.style.display = "flex";
+
+  document.querySelector(".transaction-text").textContent = "Add Transaction";
+  document.querySelector(".buy-btn").classList.remove("active");
+  document.querySelector(".sell-btn").classList.remove("active");
+  document.querySelector(".transfer-btn").classList.remove("active");
+  document.querySelector(".coin-input").value = "";
+  document.querySelector(".amount-input").value = "";
+  document.querySelector(".price-input").value = "";
+  document.querySelector(".date-input").value = "";
+  document.querySelector(".time-input").value = "";
+  document.querySelector(".total-spent-input").textContent = `$ 0`;
+  document.querySelector(".add-transaction-btn").style.display = "flex";
+  document.querySelector(".update-btn").style.display = "none";
 });
 
 // add Transaction window closer icon.
@@ -174,6 +210,7 @@ addTransactionBtn.addEventListener("click", () => {
   localStorage.setItem(selectedPortfolioKey, JSON.stringify(saveData));
   let updatedData = JSON.parse(localStorage.getItem(protfolioSelected));
   renderTransactionList(updatedData);
+  closeOverlay();
 });
 
 // Local deki veriyi html ekleme
@@ -254,6 +291,10 @@ function renderTransactionList(transactionData) {
 
     penToSquare.addEventListener("click", () => {
       editTransaction(index);
+      document.querySelector(".transaction-text").textContent =
+        "Edit Transaction";
+      document.querySelector(".add-transaction-btn").style.display = "none";
+      document.querySelector(".update-btn").style.display = "flex";
     });
     trashCan.addEventListener("click", () => {
       deleteEntry(index);
@@ -303,28 +344,8 @@ function updateEntry(index) {
 updatebtn = document.querySelector(".update-btn");
 updatebtn.addEventListener("click", () => {
   updateEntry(document.querySelector(".index-input").value);
+  closeOverlay();
 });
-
-// const edittransactionType =
-//   document.querySelector(".trans-type > div").textContent;
-// const editcoinName = document.querySelector(".trans-coin").textContent;
-// const editamount = document.querySelector(".trans-amount").textContent;
-// const editprice = document.querySelector(".trans-price").textContent;
-// const editdate = document.querySelector(".trans-date").textContent;
-// const [datePart, timePart] = editdate.split(" ");
-
-//function editTransaction(index) {
-// overlay.style.display = "flex";
-// let updatedData = JSON.parse(localStorage.getItem(protfolioSelected)) || [];
-// updatedData.splice(index, 1);
-// let coinNameEdit = document.querySelector(".coin-input");
-// coinNameEdit.value = updatedData[0].name;
-// let amountEdit = document.querySelector(".amount-input");
-// amountEdit.value = updatedData[0].amount;
-// console.log(updatedData[0]);
-// console.log(updatedData[0].amount);
-// console.log(index.amount);
-//}
 
 // Delete transaction faction
 function deleteEntry(index) {

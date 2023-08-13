@@ -592,6 +592,19 @@ input::-webkit-outer-spin-button {
   letter-spacing: 2px;
 }
 
+.update-btn {
+  background-color: var(--blue);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  font-size: 18px;
+  margin: 20px 0;
+  padding: 18px;
+  border-radius: 20px;
+  cursor: pointer;
+  letter-spacing: 2px;}
+
 .close-icon {
   position: absolute;
   top: 20px;

@@ -1,3 +1,54 @@
+function walletHolding() {
+  let updatedData = JSON.parse(localStorage.getItem(protfolioSelected)) || [];
+  const transactions = updatedData;
+
+  const transactionsByName = {};
+
+  // Transactions'ı isimlere göre grupla
+  transactions.forEach((transaction) => {
+    const name = transaction.name;
+    if (!transactionsByName[name]) {
+      transactionsByName[name] = [];
+    }
+    transactionsByName[name].push(transaction);
+  });
+
+  console.log(transactionsByName);
+
+  //// Buy ve Sell işlemlerini hesapla
+  Object.keys(transactionsByName).forEach((name) => {
+    const calculateTotal = (type, field) =>
+      transactionsByName[name]
+        .filter((transaction) => transaction.type === type)
+        .reduce(
+          (total, transaction) => total + parseFloat(transaction[field]),
+          0
+        );
+
+    const buyAmount = calculateTotal("Buy", "amount");
+    const sellAmount = calculateTotal("Sell", "amount");
+    const result = buyAmount - sellAmount;
+
+    const buyValue = calculateTotal("Buy", "value");
+    const sellValue = calculateTotal("Sell", "value");
+    const resultValue = buyValue - sellValue;
+
+    /// En yuksek En dusuk Satin alim.
+    const prices = transactionsByName[name].map((transaction) =>
+      parseFloat(transaction.price)
+    );
+
+    const maxPrice = Math.max(...prices);
+    const minPrice = Math.min(...prices);
+    const averagePrice =
+      prices.reduce((sum, price) => sum + price, 0) / prices.length;
+
+    console.log(
+      `Name: ${name}, Amount Result: ${result}, Value Result: $ ${resultValue} Max Price: ${maxPrice}, Min Price: ${minPrice} Average Price: ${averagePrice}`
+    );
+  });
+}
+
 //localstorage keys object listed in .protfolio-list
 function showPortfolioList() {
   const portfolioList = document.querySelector(".protfolio-list");
@@ -69,6 +120,7 @@ protfolioList.addEventListener("click", () => {
   listTransactionContainer.innerHTML = "";
   let updatedData = JSON.parse(localStorage.getItem(protfolioSelected)) || [];
   renderTransactionList(updatedData);
+  walletHolding();
 });
 
 // Portfolio name change webpage
@@ -203,7 +255,6 @@ addTransactionBtn.addEventListener("click", () => {
     value: totalSpent,
   };
   console.log(selectedPortfolioKey);
-  console.log(transactionData);
 
   let saveData = JSON.parse(localStorage.getItem(protfolioSelected)) || [];
   saveData.push(transactionData);
@@ -324,7 +375,6 @@ function editTransaction(index) {
   } else if (transData[index].type === "Transfer") {
     document.querySelector(".transfer-btn").classList.add("active");
   }
-
   updateTotalSpent();
 }
 
@@ -332,11 +382,13 @@ function editTransaction(index) {
 
 function updateEntry(index) {
   let transData = JSON.parse(localStorage.getItem(protfolioSelected)) || [];
+  transData[index].type = typeInput;
   transData[index].name = document.querySelector(".coin-input").value;
   transData[index].amount = document.querySelector(".amount-input").value;
   transData[index].price = document.querySelector(".price-input").value;
   transData[index].date = document.querySelector(".date-input").value;
   transData[index].time = document.querySelector(".time-input").value;
+  transData[index].value = totalSpentInput.textContent.slice(2);
 
   localStorage.setItem(protfolioSelected, JSON.stringify(transData));
   renderTransactions();
@@ -363,3 +415,31 @@ function renderTransactions() {
   let updatedData = JSON.parse(localStorage.getItem(protfolioSelected)) || [];
   renderTransactionList(updatedData);
 }
+
+////////////////HOLDINGS/////////////////
+
+// /// Anahardeğer çiftlerini LocalStorage'dan alın
+// // Tüm anahtar-değer çiftlerini LocalStorage'dan alın
+// const allItems = { ...localStorage };
+
+// // Anahtar-değer çiftlerini içeren nesneleri ayrıştırın
+// const parsedItems = Object.keys(allItems).reduce((acc, key) => {
+//   try {
+//     const parsedValue = JSON.parse(allItems[key]);
+//     acc[key] = parsedValue;
+//   } catch (error) {
+//     console.error(
+//       `Hata: Anahtar "${key}" için değer ayrıştırılamadı: ${error}`
+//     );
+//   }
+//   return acc;
+// }, {});
+
+// // Tüm verilere erişmek için parsedItems nesnesini kullanabilirsiniz
+// console.log(parsedItems);
+
+// console.log(allItems);
+
+// const values = Object.values(allItems);
+
+// console.log(values);

@@ -14,6 +14,8 @@ function walletHolding() {
   });
 
   console.log(transactionsByName);
+  const listHoldingWallet = document.querySelector(".listHoldingWallet");
+  listHoldingWallet.innerHTML = "";
 
   //// Buy ve Sell işlemlerini hesapla
   Object.keys(transactionsByName).forEach((name) => {
@@ -46,6 +48,46 @@ function walletHolding() {
     console.log(
       `Name: ${name}, Amount Result: ${result}, Value Result: $ ${resultValue} Max Price: ${maxPrice}, Min Price: ${minPrice} Average Price: ${averagePrice}`
     );
+
+    //Yuvarlamalar
+    function roundWithPrecision(number, precision) {
+      const factor = 10 ** precision;
+      return Math.round(number * factor) / factor;
+    }
+    const roundedResult = roundWithPrecision(result, 4);
+    const roundedResultValue = roundWithPrecision(resultValue, 4);
+    const roundedMaxPrice = roundWithPrecision(maxPrice, 4);
+    const roundedMinPrice = roundWithPrecision(minPrice, 4);
+    const roundedAveragePrice = roundWithPrecision(averagePrice, 4);
+
+    console.log(
+      `Name: ${name}, Amount Result: ${roundedResult}, Value Result: $ ${roundedResultValue} Max Price: ${roundedMaxPrice}, Min Price: ${roundedMinPrice} Average Price: ${roundedAveragePrice}`
+    );
+
+    const itemDiv = document.createElement("div");
+    itemDiv.classList.add("list-item");
+
+    itemDiv.innerHTML = `
+          <div class="item-name">
+            <i class="fa-solid fa-litecoin-sign" style="color: #ffffff"></i>
+            <div class="coin">${name}</div>
+          </div>
+          <div class="item-amount">${roundedResult}</div>
+          <div class="item-price">$ 300.12</div>
+          <div class="item-value">$ ${roundedResultValue}</div>
+          <div class="item-lowes">$ ${roundedMinPrice}</div>
+          <div class="item-avg">$ ${roundedAveragePrice}</div>
+          <div class="item-highest">$ ${roundedMaxPrice}</div>
+          <div class="item-profit">
+            <div class="profit">+ $450.90</div>
+            <div class="percentage">3.16 %</div>
+          </div>
+          <div class="item-action">
+            <i class="fa-solid fa-circle-chevron-right" style="color: #ffffff"></i>
+          </div>
+        `;
+
+    listHoldingWallet.appendChild(itemDiv);
   });
 }
 

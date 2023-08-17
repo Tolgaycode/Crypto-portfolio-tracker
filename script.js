@@ -54,11 +54,11 @@ function walletHolding() {
       const factor = 10 ** precision;
       return Math.round(number * factor) / factor;
     }
-    const roundedResult = roundWithPrecision(result, 4);
-    const roundedResultValue = roundWithPrecision(resultValue, 4);
-    const roundedMaxPrice = roundWithPrecision(maxPrice, 4);
-    const roundedMinPrice = roundWithPrecision(minPrice, 4);
-    const roundedAveragePrice = roundWithPrecision(averagePrice, 4);
+    const roundedResult = roundWithPrecision(result, 3);
+    const roundedResultValue = roundWithPrecision(resultValue, 2);
+    const roundedMaxPrice = roundWithPrecision(maxPrice, 2);
+    const roundedMinPrice = roundWithPrecision(minPrice, 2);
+    const roundedAveragePrice = roundWithPrecision(averagePrice, 2);
 
     console.log(
       `Name: ${name}, Amount Result: ${roundedResult}, Value Result: $ ${roundedResultValue} Max Price: ${roundedMaxPrice}, Min Price: ${roundedMinPrice} Average Price: ${roundedAveragePrice}`
@@ -73,7 +73,7 @@ function walletHolding() {
             <div class="coin">${name}</div>
           </div>
           <div class="item-amount">${roundedResult}</div>
-          <div class="item-price">$ 300.12</div>
+          <div class="item-price">$ Updated</div>
           <div class="item-value">$ ${roundedResultValue}</div>
           <div class="item-lowes">$ ${roundedMinPrice}</div>
           <div class="item-avg">$ ${roundedAveragePrice}</div>

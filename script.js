@@ -13,7 +13,6 @@ function walletHolding() {
     transactionsByName[name].push(transaction);
   });
 
-  console.log(transactionsByName);
   const listHoldingWallet = document.querySelector(".listHoldingWallet");
   listHoldingWallet.innerHTML = "";
 
@@ -45,10 +44,6 @@ function walletHolding() {
     const averagePrice =
       prices.reduce((sum, price) => sum + price, 0) / prices.length;
 
-    console.log(
-      `Name: ${name}, Amount Result: ${result}, Value Result: $ ${resultValue} Max Price: ${maxPrice}, Min Price: ${minPrice} Average Price: ${averagePrice}`
-    );
-
     //Yuvarlamalar
     function roundWithPrecision(number, precision) {
       const factor = 10 ** precision;
@@ -59,10 +54,6 @@ function walletHolding() {
     const roundedMaxPrice = roundWithPrecision(maxPrice, 2);
     const roundedMinPrice = roundWithPrecision(minPrice, 2);
     const roundedAveragePrice = roundWithPrecision(averagePrice, 2);
-
-    console.log(
-      `Name: ${name}, Amount Result: ${roundedResult}, Value Result: $ ${roundedResultValue} Max Price: ${roundedMaxPrice}, Min Price: ${roundedMinPrice} Average Price: ${roundedAveragePrice}`
-    );
 
     const itemDiv = document.createElement("div");
     itemDiv.classList.add("list-item");
@@ -89,6 +80,30 @@ function walletHolding() {
 
     listHoldingWallet.appendChild(itemDiv);
   });
+  updateHoldingValue();
+}
+
+//Total Holding Value
+function updateHoldingValue() {
+  const listHoldingWallet = document.querySelector(".listHoldingWallet");
+  const holdingValue = document.querySelector(".holding-value");
+
+  // Toplam değeri saklamak için bir değişken oluşturma
+  let totalValue = 0;
+
+  // listHoldingWallet içindeki her .item-value öğesini döngü ile işleme
+  const itemValues = listHoldingWallet.querySelectorAll(".item-value");
+  itemValues.forEach((itemValue) => {
+    const valueText = itemValue.textContent; // Öğenin metin içeriğini alın
+    const value = parseFloat(valueText.replace("$", "")); // "$" sembolünü kaldırarak sayıya çevirme
+    if (!isNaN(value)) {
+      // Geçerli bir sayıya dönüştüyse
+      totalValue += value; // Değeri toplama
+    }
+  });
+
+  // Toplam değeri holdingValue içine yazdırma
+  holdingValue.textContent = "$ " + totalValue.toFixed(2);
 }
 
 //localstorage keys object listed in .protfolio-list

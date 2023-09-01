@@ -614,3 +614,35 @@ input::-webkit-outer-spin-button {
   color: #888;
   cursor: pointer;
 }
+
+.dropdown-list {
+  position: absolute;
+  border-top: none;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  width: 95%;
+  max-height: 400px;
+  overflow-y: auto;
+  background: rgb(23,21,33);
+  background: linear-gradient(0deg, rgba(23,21,33,1) 0%, rgba(28,48,77,1) 100%);
+  border-radius: 20px;
+}
+
+/* Styling for individual items in the dropdown list */
+.dropdown-list li {
+  display: flex;
+  padding: 8px;
+  cursor: pointer;
+}
+
+/* Styling for hovered items in the dropdown list */
+.dropdown-list li:hover {
+  background-color: #f0f0f0;
+  color: black;
+}
+
+.dropdown-list li img {
+  margin: 0px 15px 0px 15px;
+
+}

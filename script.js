@@ -532,9 +532,9 @@ function renderDropdown(coins) {
     // Handle click on a dropdown item
     li.addEventListener("click", () => {
       searchInput.value = coin.symbol;
-      coinNameElement.textContent = "Coin Name: " + coin.symbol;
-      coinLogoElement.innerHTML =
-        "Coin Logo: " + `<img src="${coin.thumb}" alt="${coin.symbol} Logo">`;
+      // coinNameElement.textContent = "Coin Name: " + coin.symbol;
+      // coinLogoElement.innerHTML =
+      //  "Coin Logo: " + `<img src="${coin.thumb}" alt="${coin.symbol} Logo">`;
       closeDropdown();
     });
 

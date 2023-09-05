@@ -293,6 +293,7 @@ const addTransactionBtn = document.querySelector(".add-transaction-btn");
 
 addTransactionBtn.addEventListener("click", () => {
   const transactionType = typeInput;
+  const cointhumblink = coinThumb;
   const coinName = document.querySelector(".coin-input").value;
   const amount = document.querySelector(".amount-input").value;
   const price = document.querySelector(".price-input").value;
@@ -304,6 +305,7 @@ addTransactionBtn.addEventListener("click", () => {
   const selectedPortfolioKey = `${protfolioSelected}`;
   const transactionData = {
     type: transactionType,
+    coinThumb: cointhumblink,
     name: coinName,
     amount: amount,
     price: price,
@@ -349,8 +351,8 @@ function renderTransactionList(transactionData) {
     const transName = document.createElement("div");
     transName.classList.add("trans-name");
     transName.innerHTML = `
-      <i class="fa-solid fa-litecoin-sign" style="color: #ffffff"></i>
-      <div class="trans-coin">${transaction.name}</div>
+    <img src="${transaction.coinThumb}" alt="Logo">      
+    <div class="trans-coin">${transaction.name}</div>
     `;
 
     const transAmount = document.createElement("div");
@@ -532,10 +534,12 @@ function renderDropdown(coins) {
     // Handle click on a dropdown item
     li.addEventListener("click", () => {
       searchInput.value = coin.symbol;
+      coinThumb = coin.thumb;
       // coinNameElement.textContent = "Coin Name: " + coin.symbol;
       // coinLogoElement.innerHTML =
       //  "Coin Logo: " + `<img src="${coin.thumb}" alt="${coin.symbol} Logo">`;
       closeDropdown();
+      console.log(coinThumb);
     });
 
     dropdownList.appendChild(li);
